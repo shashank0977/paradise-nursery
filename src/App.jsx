@@ -1,6 +1,10 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
+import ProductList from "./components/ProductList";
+import AboutUs from "./components/AboutUs";
+import CartItem from "./components/CartItem";
 
-function App() {
+function Home() {
   return (
     <div className="landing-page">
       <div className="landing-content">
@@ -11,11 +15,26 @@ function App() {
           and healthy houseplants.
         </p>
 
-        <button className="get-started-button">
-          Get Started
-        </button>
+        <Link to="/plants">
+          <button className="get-started-button">
+            Get Started
+          </button>
+        </Link>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/plants" element={<ProductList />} />
+        <Route path="/cart" element={<CartItem />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
